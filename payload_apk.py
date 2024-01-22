@@ -10,6 +10,10 @@ import shutil
 # ANSI Color Codes for Improved Readability
 BLUE, RED, WHITE, YELLOW, MAGENTA, GREEN, END = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'
 
+# Função para gerar um nome aleatório
+def generate_random_name():
+    return ''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=8))
+
 def get_arguments():
     banner.banner1()
     parser = argparse.ArgumentParser(description=f'{RED}APK Infector v1.0')
@@ -44,8 +48,6 @@ def check_dependencies_and_updates():
     check_dependencies("jarsigner", "Jarsigner")
     check_dependencies("apksigner", "APKsigner")
     check_dependencies("zipalign", "ZipAlign")
-
-# The rest of the code kept similar, except for additional functions and better organization.
 
 def main():
     arguments = get_arguments()  

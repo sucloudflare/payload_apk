@@ -1,5 +1,5 @@
-# Payload APK Generator
-O Payload APK Generator é uma ferramenta simples para injetar payloads Metasploit em aplicativos Android legítimos. Este script automatiza o processo de criação de um APK infectado para fins de teste e pesquisa.
+# Payload APK 
+O Payload APK é uma ferramenta simples para injetar payloads Metasploit em aplicativos Android legítimos. Este script automatiza o processo de criação de um APK infectado para fins de teste e pesquisa.
 
 ## Requisitos
 
@@ -13,13 +13,13 @@ Certifique-se de ter as seguintes dependências instaladas no seu sistema:
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/sucloudflare/payload-apk-generator.git
+    git clone https://github.com/sucloudflare/payload_apk.git
     ```
 
 2. Navegue até o diretório do script:
 
     ```bash
-    cd payload-apk-generator
+    cd payload_apk
     ```
 
 3. Execute o script com os argumentos necessários:

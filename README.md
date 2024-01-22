@@ -32,7 +32,7 @@ Certifique-se de ter as seguintes dependências instaladas no seu sistema:
 
 4. O arquivo APK infectado será gerado no diretório e estará disponível como `Final_Infected.apk`.
 
-########### (;
+<h1>Explicação</h1>
 
 Esse código é um script Python que automatiza o processo de criação de um APK infectado com um payload Meterpreter para fins educacionais e de pesquisa. Aqui está uma breve explicação de cada parte do código: 
 

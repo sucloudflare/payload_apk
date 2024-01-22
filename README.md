@@ -63,7 +63,7 @@ Obtenção de Argumentos da Linha de Comando:
 Pitão 
 
         def obter_argumentos():
-    # ...
+    
     
 O script usa a biblioteca  argparse para analisar e obter os argumentos passados pela linha de comando.
 
@@ -72,9 +72,10 @@ Verificação de Dependências:
 Pitão 
 
         def verificar_dependencias(dependencia, nome):
-    # ...
+
+    
 def verificar_dependencias_e_atualizacoes():
-    # ...
+
     
 Essas funções verificam se as dependências necessárias, como  apktool,  jarsigner,  apksigner e  zipalign, estão instaladas no sistema. Se não estiverem, o script oferece a opção de instalá-las. 
 
@@ -84,7 +85,7 @@ Pitão
 
         def main():
         arguments = obter_argumentos()  
-        # ...
+        
             
     A função principal do script onde todo o processo é coordenado. Ele obtém os argumentos da linha de comando, gera variáveis aleatórias, verifica dependências, gera um payload Meterpreter, realiza a descompilação do APK original, faz modificações, compila o APK infectado, assina e ajusta o alinhamento do APK.
 
